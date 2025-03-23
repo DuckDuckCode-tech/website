@@ -4,8 +4,6 @@ import { Card } from "@/components/ui/card";
 export default function LoginPage() {
     const clientId = "Iv23liqvu5cGEtM5aQcC";
 
-    const callbackUrl = "https://main.d2gdeh3k9dtblh.amplifyapp.com/api/github/callback";
-
     return (
         <div className="container flex h-screen w-screen flex-col items-center justify-center">
             <Card className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px] p-8">
@@ -16,7 +14,7 @@ export default function LoginPage() {
 
                     {/*href={`https://github.com/login/oauth/authorize?client_id=${clientId}`}*/}
                 <a
-                    href={`https://github.com/apps/duckduckcode-tech/installations/new?redirect_uri=${callbackUrl}`}
+                    href={`https://github.com/apps/duckduckcode-tech/installations/new`}
                     className="w-full inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
                 >
                     <LucideGithub className="mr-2 h-4 w-4" />
