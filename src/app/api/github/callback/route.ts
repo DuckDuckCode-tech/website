@@ -48,9 +48,10 @@ export async function GET(request: NextRequest) {
     });
     console.log("Created access token");
 
-    console.log(`Redirecting to ${new URL("/chat", request.url)}`);
+    const prodUrl = "https://main.d2gdeh3k9dtblh.amplifyapp.com/";
+    console.log(`Redirecting to ${new URL("/chat", prodUrl)}`);
 
-    const response = NextResponse.redirect(new URL("/chat", request.url));
+    const response = NextResponse.redirect(new URL("/chat", prodUrl));
     response.cookies.set({
         name: "accessToken",
         value: body.access_token,
