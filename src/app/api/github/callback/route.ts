@@ -8,6 +8,8 @@ import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 export async function GET(request: NextRequest) {
     const searchParams = new URL(request.url).searchParams;
 
+    console.log(searchParams);
+
     const gitResponse = await fetch("https://github.com/login/oauth/access_token", {
         method: "POST",
         headers: {
@@ -50,7 +52,7 @@ export async function GET(request: NextRequest) {
     response.cookies.set({
         name: "accessToken",
         value: body.access_token,
-        maxAge: 60 * 60 * 24 * 7,
+        maxAge: 60 * 60,
         httpOnly: true
     });
     return response;
