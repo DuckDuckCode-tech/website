@@ -68,7 +68,9 @@ export function ChatHistory({ repositoryItem }: ChatHistoryProps) {
         <div className="p-4 h-[100dvh] grow flex flex-col gap-4">
             <ScrollArea className="grow">
                 {repositoryState.chats.length === 0 ? (
-                    <p>You haven't said anything yet</p>
+                    <div className="flex flex-col items-center justify-center h-full">
+                        <p className="text-muted-foreground text-sm">No messages yet. Start the conversation!</p>
+                    </div>
                 ) : (
                     <div className="flex flex-col gap-4">
                         {repositoryState.chats.map((chat) => (
@@ -117,6 +119,8 @@ export function ChatHistory({ repositoryItem }: ChatHistoryProps) {
                             ],
                         }));
 
+                        setUserPrompt("");
+
                         try {
                             await fetch(`/api/repository/${repositoryState.repositoryName}/chat`, {
                                 method: "POST",
@@ -132,8 +136,6 @@ export function ChatHistory({ repositoryItem }: ChatHistoryProps) {
                             setRepositoryState(prevState);
                             alert("An error occurred while sending the message");
                         }
-
-                        setUserPrompt("");
                     }}
                 >
                     <LucideSend className="w-8 h-8" />

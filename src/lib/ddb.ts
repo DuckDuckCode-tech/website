@@ -1,5 +1,5 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { GetCommand, PutCommand, ScanCommand } from "@aws-sdk/lib-dynamodb";
+import { DeleteCommand, GetCommand, PutCommand, ScanCommand } from "@aws-sdk/lib-dynamodb";
 
 const TABLE_NAME = "DDCTable";
 
@@ -201,5 +201,18 @@ export class DynamoDBService {
         console.log(`Repositories retrieved for user ${userId}: ${JSON.stringify(response.Items)}`);
 
         return (response.Items as RepositoryItem[] | undefined) ?? [];
+    }
+
+    public async deleteRepository(userId: string, repositoryName: string): Promise<void> {
+        const response = await this.ddbClient.send(
+            new DeleteCommand({
+                TableName: TABLE_NAME,
+                Key: {
+                    pk: `REPOSITORY#${userId}#${repositoryName}`
+                }
+            })
+        );
+
+        console.log("Repository deleted:", response);
     }
 }

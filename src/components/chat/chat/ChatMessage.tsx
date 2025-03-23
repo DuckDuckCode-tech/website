@@ -25,7 +25,7 @@ export function ChatMessage({ message, from, createdAt }: ChatMessageProps) {
             const octokit = new Octokit({ auth: sidebarState.accessToken });
             const userInfo = await octokit.rest.users.getAuthenticated();
 
-            if (isCancelled) {
+            if (!isCancelled) {
                 setUserInfo({
                     avatar_url: userInfo.data.avatar_url
                 });
@@ -42,7 +42,7 @@ export function ChatMessage({ message, from, createdAt }: ChatMessageProps) {
             <Card>
                 <CardContent className="mt-4 flex flex-row items-end justify-between gap-2">
                     {message.length ? (
-                        <p>{message}</p>
+                        <p dangerouslySetInnerHTML={{ __html: message}} />
                     ) : (
                         <p className="inline-flex items-center flex-row gap-2">
                             <span>I'm working on it...</span>
@@ -53,7 +53,17 @@ export function ChatMessage({ message, from, createdAt }: ChatMessageProps) {
             </Card>
 
             <Avatar>
-                <AvatarImage src={from === "user" ? userInfo?.avatar_url : "/logo.png"} alt="Avatar" />
+                {from === "user" ? (
+                    <>
+                        {userInfo ? (
+                            <AvatarImage src={userInfo.avatar_url} alt="Avatar" />
+                        ) : (
+                            <div className="animate-pulse w-10 h-10 bg-gray-200 rounded-full" />
+                        )}
+                    </>
+                ) : (
+                    <AvatarImage src="/logo.png" alt="Avatar" />
+                )}
             </Avatar>
         </div>
     );
