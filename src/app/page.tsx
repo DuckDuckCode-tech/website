@@ -141,7 +141,7 @@ export default function Home() {
         <footer className="py-10 px-4 border-t">
             <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
                 <div className="mb-4 md:mb-0">
-                    <p className="text-sm text-muted-foreground">© 2025 DuckDuckGo. All rights reserved.</p>
+                    <p className="text-sm text-muted-foreground">© 2025 DuckDuckCode. All rights reserved.</p>
                 </div>
             </div>
         </footer>
