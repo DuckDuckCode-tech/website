@@ -62,8 +62,8 @@ export function CreateProjectButton({}: CreateProjectButtonProps) {
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
                 <Button className="flex flex-row gap-2">
-                    <span>Create new project</span>
                     <LucidePlusCircle className="w-4 h-4" />
+                    <span>Create new project</span>
                 </Button>
             </DialogTrigger>
             <DialogContent>

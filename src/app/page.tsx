@@ -7,7 +7,10 @@ export default function Home() {
     return (
         <div className="min-h-screen flex flex-col">
             {/* Get Started Section */}
-            <section className="flex flex-col items-center justify-center min-h-screen bg-[#fbf9ed] from-background to-muted px-4 text-center pt-14">
+            <section
+                className="flex flex-col items-center justify-center min-h-screen bg-cover bg-center px-4 text-center pt-14"
+                style={{ backgroundImage: "url('/backgroundmain.jpg')" }}
+            >
                 <div className="space-y-4 max-w-4xl">
                     <div className="text-center">
                         <h1

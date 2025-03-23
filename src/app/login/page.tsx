@@ -7,7 +7,7 @@ export default function LoginPage() {
     return (
         <div
                 className="flex min-h-screen w-screen flex-col items-center justify-center bg-cover bg-center"
-                style={{ backgroundImage: "url('/background.png')" }}
+                style={{ backgroundImage: "url('/background.jpg')" }}
             >
                 <Card className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[650px] p-10 bg-white bg-opacity-90 shadow-lg rounded-lg">
                     <div className="flex flex-col space-y-4 text-center">
