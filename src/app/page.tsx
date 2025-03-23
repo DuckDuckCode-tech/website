@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <div className="min-h-screen flex flex-col">
             {/* Get Started Section */}
-            <section className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-background to-muted px-4 text-center pt-14">
+            <section className="flex flex-col items-center justify-center min-h-screen bg-[#fbf9ed] from-background to-muted px-4 text-center pt-14">
                 <div className="space-y-4 max-w-4xl">
                     <div className="text-center">
                         <h1
@@ -28,7 +28,7 @@ export default function Home() {
                         Connect your Git repo, let it work its magic, and review changes before committing. <br />
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button asChild size="lg" className="bg-[#6bebe9] text-primary-foreground hover:bg-[#5cd6d4]">
+                        <Button asChild size="lg" className="bg-[#6bebe9] text-foreground hover:bg-[#5cd6d4]">
                             <Link href="/chat">
                                 Get Started
                             </Link>
@@ -82,7 +82,7 @@ export default function Home() {
                     />
                 </section>
 
-                        <section className="py-20 px-4 bg-muted" id="get-started">
+                        <section className="py-20 px-4 bg-[#fbf9ed]" id="get-started">
             <div className="container mx-auto max-w-5xl">
                 <div className="flex items-center justify-center gap-4 mb-10">
                     <img 
@@ -127,7 +127,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button asChild size="lg" className="bg-[#6bebe9] text-primary-foreground hover:bg-[#5cd6d4]">
+                        <Button asChild size="lg" className="bg-[#6bebe9] text-foreground hover:bg-[#5cd6d4]">
                             <Link href="/chat">
                                 Get Started
                             </Link>
