@@ -49,7 +49,7 @@ export function ChatHistory({ repositoryItem }: ChatHistoryProps) {
                 } catch (e) {
                     console.error("Error fetching repository data:", e);
                 }
-            }, 5000);
+            }, 2500);
         }
         else {
             if (pollingInterval) {
