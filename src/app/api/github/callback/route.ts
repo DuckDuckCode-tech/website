@@ -46,7 +46,7 @@ export async function GET(request: NextRequest) {
     });
     console.log("Created access token");
 
-    const response = NextResponse.redirect("http://localhost:3000/chat");
+    const response = NextResponse.redirect(new URL("/chat", request.url));
     response.cookies.set({
         name: "accessToken",
         value: body.access_token,
