@@ -48,6 +48,8 @@ export async function GET(request: NextRequest) {
     });
     console.log("Created access token");
 
+    console.log(`Redirecting to ${new URL("/chat", request.url)}`);
+
     const response = NextResponse.redirect(new URL("/chat", request.url));
     response.cookies.set({
         name: "accessToken",
