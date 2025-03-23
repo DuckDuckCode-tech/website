@@ -124,8 +124,8 @@ export default function Home() {
                     <div className="bg-[#fffddd] p-2 rounded-full">                        <span className="text-primary font-bold">3</span>
                     </div>
                     <div>
-                        <h3 className="text-xl font-bold">Start collaborating</h3>
-                        <p className="text-muted-foreground">Invite your team members and begin chatting about your code.</p>
+                        <h3 className="text-xl font-bold">Start shipping</h3>
+                        <p className="text-muted-foreground">Immediately start making code changes with natural language.</p>
                     </div>
                     </div>
                 </div>
