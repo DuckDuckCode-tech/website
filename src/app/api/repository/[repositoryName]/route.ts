@@ -5,7 +5,15 @@ import { DynamoDBService } from "@/lib/ddb";
 import { NextRequest, NextResponse } from "next/server";
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 
-export async function GET(request: NextRequest, { params }: { params: { repositoryName: string } }): Promise<NextResponse> {
+interface RepositoryRouteParams {
+    params: Promise<{
+        repositoryName: string;
+    }>;
+}
+
+export async function GET(request: NextRequest, { params }: RepositoryRouteParams): Promise<NextResponse> {
+    const repositoryName = (await params).repositoryName;;
+
     const accessToken = request.cookies.get("accessToken")?.value;
     if (!accessToken) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -16,7 +24,7 @@ export async function GET(request: NextRequest, { params }: { params: { reposito
 
     const ddbClient = new DynamoDBClient();
     const ddbService = new DynamoDBService(ddbClient);
-    const repositoryItem = await ddbService.getRepository(userInfo.data.id.toString(), params.repositoryName);
+    const repositoryItem = await ddbService.getRepository(userInfo.data.id.toString(), repositoryName);
     if (!repositoryItem) {
         return NextResponse.json({ error: "Repository not found" }, { status: 404 });
     }
@@ -26,7 +34,9 @@ export async function GET(request: NextRequest, { params }: { params: { reposito
     }, { status: 200 });
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: { repositoryName: string } }): Promise<NextResponse> {
+export async function DELETE(request: NextRequest, { params }: RepositoryRouteParams): Promise<NextResponse> {
+    const repositoryName = (await params).repositoryName;;
+
     const accessToken = request.cookies.get("accessToken")?.value;
     if (!accessToken) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -37,12 +47,12 @@ export async function DELETE(request: NextRequest, { params }: { params: { repos
 
     const ddbClient = new DynamoDBClient();
     const ddbService = new DynamoDBService(ddbClient);
-    const repositoryItem = await ddbService.getRepository(userInfo.data.id.toString(), params.repositoryName);
+    const repositoryItem = await ddbService.getRepository(userInfo.data.id.toString(), repositoryName);
     if (!repositoryItem) {
         return NextResponse.json({ error: "Repository not found" }, { status: 404 });
     }
 
-    await ddbService.deleteRepository(userInfo.data.id.toString(), params.repositoryName);
+    await ddbService.deleteRepository(userInfo.data.id.toString(), repositoryName);
 
     return NextResponse.json({
         message: "Repository deleted successfully"
