@@ -52,7 +52,7 @@ export function ChatMessage({ message, from, createdAt }: ChatMessageProps) {
                 </CardContent>
             </Card>
 
-            <Avatar>
+            <Avatar className="border">
                 {from === "user" ? (
                     <>
                         {userInfo ? (
@@ -62,7 +62,7 @@ export function ChatMessage({ message, from, createdAt }: ChatMessageProps) {
                         )}
                     </>
                 ) : (
-                    <AvatarImage src="/logo.png" alt="Avatar" />
+                    <AvatarImage src="/duck.png" alt="Avatar" />
                 )}
             </Avatar>
         </div>
